@@ -1,9 +1,14 @@
-from enum import Enum
+def simpleArraySum(ls):
+    suma = 0
+    for numbers in ls:
+        suma = suma + numbers
+    return suma
 
-class Weapons(Enum):
-    codazo = 64
-    puñetazo = 20
-    patada = 34
-    cabezazo = 10
+ar_count = int(input().strip())
 
-print(Weapons.codazo.value)
+ar = list(map(int, input().rstrip().split()))
+
+result = simpleArraySum(ar)
+
+
+print(result)
