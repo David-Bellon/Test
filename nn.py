@@ -10,7 +10,7 @@ import numpy as np
 from sklearn.preprocessing import PowerTransformer
 
 
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(device)
 
 df = pd.read_excel(r"C:\Users\dadbc\Desktop\Phy\Repositorios\Test\regression_data.xls")
@@ -58,10 +58,10 @@ class NeuralNetwork(nn.Module):
         return x
 Red = NeuralNetwork()
 
-criterion = nn.MSELoss()
-optimizer = torch.optim.Adam(Red.parameters(), lr = 0.001)
+criterion = nn.HuberLoss()
+optimizer = torch.optim.Adam(Red.parameters(), lr = 0.01)
 
-epochs = 10000
+epochs = 1000
 loss_f = []
 
 for i in range(epochs):
